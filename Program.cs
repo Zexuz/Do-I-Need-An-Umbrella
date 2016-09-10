@@ -20,17 +20,21 @@ namespace ConsoleApplication1 {
             ApiDataResponse response = restApi.GetResonse();
 
 
-            if (response.List[0].Rain == null) {
-                Console.WriteLine("No rain today!");
+
+            var rain = response.List[0].Rain;
+            if (rain != null && rain.rainfallinthreehours > 0) {
+                Console.WriteLine("You should bring a umbrella man!");
+                Console.WriteLine($"it's going to rain {rain.rainfallinthreehours}mm");
+            }
+            else {
+                Console.WriteLine("HARAMBRE DIED FOR OUR SINS!");
+                Console.WriteLine("HARAMBRE DIED FOR OUR SINS!");
+                Console.WriteLine("HARAMBRE DIED FOR OUR SINS!");
+                Console.WriteLine("HARAMBRE DIED FOR OUR SINS!");
+                Console.WriteLine("No rain today, !");
                 TerminateProgram();
             }
 
-            var rain = response.List[0].Rain;
-            if (rain != null && rain.rainfallinthreehours > 0)
-                Console.WriteLine("You should bring a umbrella man!");
-
-
-            Console.WriteLine(response.List[0].Rain.rainfallinthreehours);
 
             TerminateProgram();
         }
